@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">RelativeLayoutDemo</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="friendship_activity_title">Friendship Day</string>
+    <string name="greet_your_friend">Greet your friends!</string>
+    <string name="exit">Exit</string>
+    <string name="application_version">Version 2.1</string>
+
+    <string name="alert_title">Please Confirm!</string>
+    <string name="alert_message">Are you sure want to exit?</string>
+
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+
+    <string name="greet_your_friends_title">Hey!</string>
+    <string name="greet_your_friends">Please Greet your friends before exiting!</string>
+
+</resources>

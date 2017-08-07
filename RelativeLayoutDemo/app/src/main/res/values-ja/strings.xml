@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">RelativeLayoutDemo</string>
+    <string name="action_settings">設定</string>
+    <string name="friendship_activity_title">友情の日</string>
+    <string name="greet_your_friend">あなたの友人に挨拶してください！</string>
+    <string name="exit">出口</string>
+    <string name="application_version">バージョン2.1</string>
+</resources>

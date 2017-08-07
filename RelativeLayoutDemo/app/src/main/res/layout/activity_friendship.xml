@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/friendship_activity_bg_color"
+    android:padding="@dimen/dimen_size_18">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:text="@string/friendship_activity_title"
+        android:textSize="@dimen/text_size_22"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/greetFriendButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:text="@string/greet_your_friend" />
+
+    <Button
+        android:id="@+id/exitButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:text="@string/exit" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:text="@string/application_version"
+        android:textColor="@color/app_version_text_color" />
+
+    <ImageView
+        android:layout_width="@dimen/dimen_size_60"
+        android:layout_height="@dimen/dimen_size_60"
+        android:layout_above="@id/greetFriendButton"
+        android:layout_toStartOf="@id/greetFriendButton"
+        android:src="@drawable/ic_friend" />
+
+    <ImageView
+        android:layout_width="@dimen/dimen_size_60"
+        android:layout_height="@dimen/dimen_size_60"
+        android:layout_above="@id/greetFriendButton"
+        android:layout_toEndOf="@id/greetFriendButton"
+        android:src="@drawable/ic_friend" />
+
+    <ImageView
+        android:layout_width="@dimen/dimen_size_60"
+        android:layout_height="@dimen/dimen_size_60"
+        android:layout_below="@id/greetFriendButton"
+        android:layout_toStartOf="@id/greetFriendButton"
+        android:src="@drawable/ic_friend" />
+
+    <ImageView
+        android:layout_width="@dimen/dimen_size_60"
+        android:layout_height="@dimen/dimen_size_60"
+        android:layout_below="@id/greetFriendButton"
+        android:layout_toEndOf="@id/greetFriendButton"
+        android:src="@drawable/ic_friend" />
+
+</RelativeLayout>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">RelativeLayoutDemo</string>
+    <string name="action_settings">सेटिंग्स</string>
+    <string name="friendship_activity_title">मित्रता दिवस</string>
+    <string name="greet_your_friend">अपने दोस्तों को नमस्कार!</string>
+    <string name="exit">बाहर जाएं</string>
+    <string name="application_version">संस्करण 2.1</string>
+</resources>
