@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">TwoScreenApp</string>
+    <string name="result_activity_name">Result</string>
+</resources>
