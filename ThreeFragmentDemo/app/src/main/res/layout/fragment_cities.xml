@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#dc6a6a"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="18dp">
+
+    <Button
+        android:id="@+id/city1Button"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        tools:text="Mumbai" />
+
+    <Button
+        android:id="@+id/city2Button"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        tools:text="Delhi" />
+
+    <Button
+        android:id="@+id/city3Button"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        tools:text="Chennai" />
+
+</LinearLayout>

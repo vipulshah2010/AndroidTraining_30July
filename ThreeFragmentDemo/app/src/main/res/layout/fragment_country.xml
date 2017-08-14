@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f1bebe"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="18dp">
+
+    <Button
+        android:id="@+id/indiaButton"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:text="India" />
+
+    <Button
+        android:id="@+id/chinaButton"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:text="China" />
+
+    <Button
+        android:id="@+id/australiaButton"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:text="Australia" />
+
+</LinearLayout>
