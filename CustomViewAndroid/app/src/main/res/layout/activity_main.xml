@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/container"
     android:layout_width="match_parent"
@@ -9,7 +10,11 @@
     <com.microsoft.customviewandroid.CircleView
         android:id="@+id/circleView"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        app:circle_color_b="230"
+        app:circle_color_g="130"
+        app:circle_color_r="30"
+        app:circle_radius="@dimen/radius"
+        app:circle_type="fill" />
 
 </FrameLayout>
- 

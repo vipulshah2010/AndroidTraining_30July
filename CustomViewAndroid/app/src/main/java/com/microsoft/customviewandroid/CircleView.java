@@ -1,6 +1,7 @@
 package com.microsoft.customviewandroid;
 
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -18,25 +19,25 @@ public class CircleView extends View {
     private int r;
     private int g;
     private int b;
+    private int radius;
 
     public CircleView(Context context) {
         super(context);
-        init();
     }
 
     public CircleView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
-        init();
+        init(attrs);
     }
 
     public CircleView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        init();
+        init(attrs);
     }
 
     public CircleView(Context context, @Nullable AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
-        init();
+        init(attrs);
     }
 
     public void setCenter(float x, float y) {
@@ -51,14 +52,31 @@ public class CircleView extends View {
         invalidate();
     }
 
-    private void init() {
-        r = 255;
-        g = 0;
-        b = 0;
-        paint = new Paint();
-        paint.setStrokeWidth(10);
-        paint.setStyle(Paint.Style.FILL_AND_STROKE);
-        paint.setAntiAlias(true);
+    private void init(AttributeSet attrs) {
+
+        TypedArray array = getContext().obtainStyledAttributes(attrs,
+                R.styleable.CircleView, 0, 0);
+
+        try {
+            int rColor = array.getInt(R.styleable.CircleView_circle_color_r, 0);
+            int gColor = array.getInt(R.styleable.CircleView_circle_color_g, 0);
+            int bColor = array.getInt(R.styleable.CircleView_circle_color_b, 0);
+            int type = array.getInt(R.styleable.CircleView_circle_type, 0);
+            int radiusRes = array.getResourceId(R.styleable.CircleView_circle_radius,
+                    R.dimen.default_radius);
+
+            radius = getContext().getResources().getDimensionPixelSize(radiusRes);
+
+            r = rColor;
+            g = gColor;
+            b = bColor;
+            paint = new Paint();
+            paint.setStrokeWidth(10);
+            paint.setStyle(type == 0 ? Paint.Style.FILL : Paint.Style.STROKE);
+            paint.setAntiAlias(true);
+        } finally {
+            array.recycle();
+        }
     }
 
     private String getHexColor(int r, int g, int b) {
@@ -70,6 +88,6 @@ public class CircleView extends View {
         super.onDraw(canvas);
         String color = getHexColor(r, g, b);
         paint.setColor(Color.parseColor(color));
-        canvas.drawCircle(x, y, 50, paint);
+        canvas.drawCircle(x, y, radius, paint);
     }
 }

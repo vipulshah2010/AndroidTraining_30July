@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="CircleView">
+        <attr name="circle_color_r" format="integer" />
+        <attr name="circle_color_g" format="integer" />
+        <attr name="circle_color_b" format="integer" />
+        <attr name="circle_type" format="enum">
+            <enum name="fill" value="0" />
+            <enum name="stroke" value="1" />
+        </attr>
+        <attr name="circle_radius" format="reference" />
+    </declare-styleable>
+</resources>
