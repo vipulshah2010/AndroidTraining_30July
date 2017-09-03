@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/menu_action_weights"
+        android:icon="@drawable/ic_weights"
+        android:title="Weights" />
+
+    <item
+        android:id="@+id/menu_action_lengths"
+        android:icon="@drawable/ic_length"
+        android:title="Lengths" />
+
+    <item
+        android:id="@+id/menu_action_currency"
+        android:icon="@drawable/ic_currency"
+        android:title="Currency" />
+</menu>
