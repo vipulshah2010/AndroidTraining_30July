@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">RoomExample</string>
+    <string name="add_employee">Add Employee</string>
+    <string name="enter_name">Enter Name</string>
+    <string name="enter_age">Enter Age</string>
+    <string name="enter_location">Enter Location</string>
+
+    <string name="update">Update</string>
+    <string name="add">Add</string>
+    <string name="delete">Delete</string>
+
+
+</resources>
