@@ -7,7 +7,11 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class EmployeeDetailsActivity extends AppCompatActivity {
 
@@ -17,6 +21,10 @@ public class EmployeeDetailsActivity extends AppCompatActivity {
     private EditText nameEditText;
     private EditText ageEditText;
     private EditText locationEditText;
+
+    private CheckBox cricketCheckbox;
+    private CheckBox hockeyCheckbox;
+    private CheckBox footballCheckbox;
 
     public static Intent getIntent(Context context) {
         return new Intent(context, EmployeeDetailsActivity.class);
@@ -39,6 +47,10 @@ public class EmployeeDetailsActivity extends AppCompatActivity {
         ageEditText = findViewById(R.id.ageEditText);
         locationEditText = findViewById(R.id.locationEditText);
 
+        cricketCheckbox = findViewById(R.id.cricketCheckbox);
+        hockeyCheckbox = findViewById(R.id.hockeyCheckbox);
+        footballCheckbox = findViewById(R.id.footballCheckbox);
+
         Button addUpdateButton = findViewById(R.id.addUpdateButton);
         Button deleteButton = findViewById(R.id.deleteButton);
 
@@ -49,6 +61,10 @@ public class EmployeeDetailsActivity extends AppCompatActivity {
             nameEditText.setText(employee.getName());
             ageEditText.setText(String.valueOf(employee.getAge()));
             locationEditText.setText(employee.getLocation());
+
+            cricketCheckbox.setChecked(employee.getHobbies().contains(Employee.CRICKET));
+            hockeyCheckbox.setChecked(employee.getHobbies().contains(Employee.HOCKEY));
+            footballCheckbox.setChecked(employee.getHobbies().contains(Employee.FOOTBALL));
         } else {
             deleteButton.setVisibility(View.GONE);
             addUpdateButton.setText(R.string.add);
@@ -75,6 +91,19 @@ public class EmployeeDetailsActivity extends AppCompatActivity {
                 employee.setAge(age);
                 employee.setLocation(location);
 
+                List<String> hobbies = new ArrayList<>();
+
+                if (cricketCheckbox.isChecked()) {
+                    hobbies.add(Employee.CRICKET);
+                }
+                if (hockeyCheckbox.isChecked()) {
+                    hobbies.add(Employee.HOCKEY);
+                }
+                if (footballCheckbox.isChecked()) {
+                    hobbies.add(Employee.FOOTBALL);
+                }
+
+                employee.setHobbies(hobbies);
 
                 intent.putExtra(ARG_EMPLOYEE, employee);
                 setResult(RESULT_OK, intent);

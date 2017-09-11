@@ -4,6 +4,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -34,6 +35,10 @@ public class EmployeeAdapter extends RecyclerView.Adapter<EmployeeAdapter.Employ
         holder.nameTextView.setText(employee.getName());
         holder.ageTextView.setText(String.valueOf(employee.getAge()));
         holder.locationTextView.setText(employee.getLocation());
+
+        holder.cricketCheckBox.setChecked(employee.getHobbies().contains(Employee.CRICKET));
+        holder.hockeyCheckBox.setChecked(employee.getHobbies().contains(Employee.HOCKEY));
+        holder.footballCheckBox.setChecked(employee.getHobbies().contains(Employee.FOOTBALL));
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -86,12 +91,20 @@ public class EmployeeAdapter extends RecyclerView.Adapter<EmployeeAdapter.Employ
         final TextView ageTextView;
         final TextView locationTextView;
 
+        final CheckBox cricketCheckBox;
+        final CheckBox hockeyCheckBox;
+        final CheckBox footballCheckBox;
+
         EmployeeViewHolder(View view) {
             super(view);
 
             nameTextView = view.findViewById(R.id.nameTextView);
             ageTextView = view.findViewById(R.id.ageTextView);
             locationTextView = view.findViewById(R.id.locationTextView);
+
+            cricketCheckBox = view.findViewById(R.id.cricketCheckbox);
+            hockeyCheckBox = view.findViewById(R.id.hockeyCheckbox);
+            footballCheckBox = view.findViewById(R.id.footballCheckbox);
         }
     }
 }

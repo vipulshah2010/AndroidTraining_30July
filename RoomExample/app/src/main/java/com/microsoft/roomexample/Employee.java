@@ -1,9 +1,13 @@
 package com.microsoft.roomexample;
 
 import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.PrimaryKey;
+import android.arch.persistence.room.TypeConverters;
 import android.os.Parcel;
 import android.os.Parcelable;
+
+import java.util.List;
 
 @Entity(tableName = "employee")
 public class Employee implements Parcelable {
@@ -19,11 +23,20 @@ public class Employee implements Parcelable {
             return new Employee[size];
         }
     };
+
+    public final static String CRICKET = "cricket";
+    public final static String HOCKEY = "hockey";
+    public final static String FOOTBALL = "football";
+
     @PrimaryKey(autoGenerate = true)
     private long _id;
     private String name;
     private int age;
     private String location;
+
+    @Ignore
+    @TypeConverters({HobbyConverter.class})
+    private List<String> hobbies;
 
     public Employee() {
     }
@@ -33,6 +46,7 @@ public class Employee implements Parcelable {
         this.name = in.readString();
         this.age = in.readInt();
         this.location = in.readString();
+        this.hobbies = in.createStringArrayList();
     }
 
     public long getId() {
@@ -67,6 +81,14 @@ public class Employee implements Parcelable {
         this.location = location;
     }
 
+    public List<String> getHobbies() {
+        return hobbies;
+    }
+
+    public void setHobbies(List<String> hobbies) {
+        this.hobbies = hobbies;
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -78,6 +100,7 @@ public class Employee implements Parcelable {
         dest.writeString(this.name);
         dest.writeInt(this.age);
         dest.writeString(this.location);
+        dest.writeStringList(hobbies);
     }
 
     @Override
