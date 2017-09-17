@@ -12,16 +12,13 @@ import java.util.List;
 public interface EmployeeDao {
 
     @Insert
-    Long addEmployee(Employee employee);
-
-    @Insert
-    List<Long> addEmployees(Employee... employees);
+    void addEmployee(Employee employee);
 
     @Update
-    int updateEmployee(Employee employee);
+    void updateEmployee(Employee employee);
 
     @Delete
-    int deleteEmployee(Employee employee);
+    void deleteEmployee(Employee employee);
 
     @Query("select * from employee")
     List<Employee> getEmployees();

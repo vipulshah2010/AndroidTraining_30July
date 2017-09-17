@@ -24,9 +24,9 @@ public class Employee implements Parcelable {
         }
     };
 
-    public final static String CRICKET = "cricket";
-    public final static String HOCKEY = "hockey";
-    public final static String FOOTBALL = "football";
+    final static String CRICKET = "cricket";
+    final static String HOCKEY = "hockey";
+    final static String FOOTBALL = "football";
 
     @PrimaryKey(autoGenerate = true)
     private long _id;
@@ -38,10 +38,10 @@ public class Employee implements Parcelable {
     @TypeConverters({HobbyConverter.class})
     private List<String> hobbies;
 
-    public Employee() {
+    Employee() {
     }
 
-    protected Employee(Parcel in) {
+    private Employee(Parcel in) {
         this._id = in.readLong();
         this.name = in.readString();
         this.age = in.readInt();

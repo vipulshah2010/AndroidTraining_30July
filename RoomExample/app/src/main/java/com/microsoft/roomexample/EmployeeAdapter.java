@@ -19,7 +19,7 @@ public class EmployeeAdapter extends RecyclerView.Adapter<EmployeeAdapter.Employ
         employees = new ArrayList<>();
     }
 
-    public void setEmployeeListener(EmployeeListener employeeListener) {
+    void setEmployeeListener(EmployeeListener employeeListener) {
         this.employeeListener = employeeListener;
     }
 
@@ -52,7 +52,7 @@ public class EmployeeAdapter extends RecyclerView.Adapter<EmployeeAdapter.Employ
         });
     }
 
-    public List<Employee> getEmployees() {
+    List<Employee> getEmployees() {
         return employees;
     }
 
