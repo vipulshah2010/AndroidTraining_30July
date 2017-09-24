@@ -1,7 +1,9 @@
 package com.microsoft.implicitintents;
 
 import android.Manifest;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
@@ -9,6 +11,9 @@ import android.os.Bundle;
 import android.os.ParcelFileDescriptor;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -18,13 +23,8 @@ import android.widget.Toast;
 
 import java.io.FileDescriptor;
 import java.io.FileNotFoundException;
-import java.util.List;
 
-import pub.devrel.easypermissions.AfterPermissionGranted;
-import pub.devrel.easypermissions.AppSettingsDialog;
-import pub.devrel.easypermissions.EasyPermissions;
-
-public class MainActivity extends AppCompatActivity implements EasyPermissions.PermissionCallbacks {
+public class MainActivityRuntimePermissions extends AppCompatActivity {
 
     private static final int REQUEST_CODE_CAMERA = 102;
     private static final int REQUEST_CODE_GALLERY = 201;
@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity implements EasyPermissions.P
         Button galleryButton = findViewById(R.id.galleryButton);
 
         Button dialButton = findViewById(R.id.dialButton);
-        Button callButton = findViewById(R.id.callButton);
+        final Button callButton = findViewById(R.id.callButton);
 
         imageView = findViewById(R.id.imageView);
 
@@ -75,30 +75,58 @@ public class MainActivity extends AppCompatActivity implements EasyPermissions.P
         callButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                makeCall();
+                callPhone();
             }
         });
     }
 
-    @AfterPermissionGranted(REQUEST_CODE_PHONE_PERMISSION)
-    private void makeCall() {
-        if (EasyPermissions.hasPermissions(this, Manifest.permission.CALL_PHONE)) {
-            String number = "+918879133347";
-            Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + number));
+    private void callPhone() {
+        String number = "+918879133347";
+        Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + number));
+
+
+        if (ContextCompat.checkSelfPermission(MainActivityRuntimePermissions.this,
+                Manifest.permission.CALL_PHONE) == PackageManager.PERMISSION_GRANTED) {
             startActivity(intent);
         } else {
-            EasyPermissions.requestPermissions(this,
-                    "Please give us permission so we can help you with phone calls!",
-                    REQUEST_CODE_PHONE_PERMISSION, Manifest.permission.CALL_PHONE);
+            if (ActivityCompat.shouldShowRequestPermissionRationale(MainActivityRuntimePermissions.this,
+                    Manifest.permission.CALL_PHONE)) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                builder.setMessage("Please give us permission so we can help you with phone calls!");
+                builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        showBuiltInPermissionDialog();
+                    }
+                });
+                builder.setNegativeButton("No!", null);
+                builder.show();
+            } else {
+                showBuiltInPermissionDialog();
+            }
         }
+    }
+
+    private void showBuiltInPermissionDialog() {
+        ActivityCompat.requestPermissions
+                (MainActivityRuntimePermissions.this, new String[]{Manifest.permission.CALL_PHONE},
+                        REQUEST_CODE_PHONE_PERMISSION);
     }
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
                                            @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-
-        EasyPermissions.onRequestPermissionsResult(requestCode, permissions, grantResults, this);
+        if (requestCode == REQUEST_CODE_PHONE_PERMISSION) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                callPhone();
+            } else {
+                if (!ActivityCompat.shouldShowRequestPermissionRationale
+                        (MainActivityRuntimePermissions.this, Manifest.permission.CALL_PHONE)) {
+                    Toast.makeText(MainActivityRuntimePermissions.this, "Please go to settings!",
+                            Toast.LENGTH_LONG).show();
+                }
+            }
+        }
     }
 
     @Override
@@ -132,18 +160,6 @@ public class MainActivity extends AppCompatActivity implements EasyPermissions.P
                 }
                 Log.i("vipul", uri.toString());
             }
-        }
-    }
-
-    @Override
-    public void onPermissionsGranted(int requestCode, List<String> perms) {
-        // do nothing
-    }
-
-    @Override
-    public void onPermissionsDenied(int requestCode, List<String> perms) {
-        if (EasyPermissions.somePermissionPermanentlyDenied(this, perms)) {
-            new AppSettingsDialog.Builder(this).build().show();
         }
     }
 }

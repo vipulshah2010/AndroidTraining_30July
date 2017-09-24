@@ -18,11 +18,14 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // Obseravble = produce the events
+        // Observer = who consumes the events
+
         // Simple Introduction
         Observable<String> observable =
                 Observable.fromArray("Vipul", "Vinay", "Vishal");
 
-        observable.subscribe(new DisposableObserver<String>() {
+        DisposableObserver<String> observer = new DisposableObserver<String>() {
             @Override
             public void onNext(String name) {
                 Log.i("vipul", "Received Element " + name);
@@ -37,7 +40,9 @@ public class MainActivity extends AppCompatActivity {
             public void onComplete() {
                 Log.i("vipul", "All Names Done!");
             }
-        });
+        };
+
+        observable.subscribe(observer);
 
         // Filter Operator
         Observable<Integer> numbersObservable = Observable.fromArray(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
