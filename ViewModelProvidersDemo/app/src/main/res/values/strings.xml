@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">ViewModelProvidersDemo</string>
+    <string name="set_person">Set Person</string>
+    <string name="get_person">Get Person</string>
+</resources>
