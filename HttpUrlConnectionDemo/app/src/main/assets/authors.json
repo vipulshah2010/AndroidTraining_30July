@@ -1,0 +1,29 @@
+{
+  "authors": [
+    {
+      "name": "Vipul",
+      "location": "Thane",
+      "books": [
+        {
+          "title": "C",
+          "pages": 400,
+          "prices": [
+            {
+              "country": "India",
+              "price": 100
+            },
+            {
+              "country": "London",
+              "price": 200
+            }
+          ]
+        },
+        {
+          "title": "C#",
+          "pages": 200,
+          "price": "$20"
+        }
+      ]
+    }
+  ]
+}

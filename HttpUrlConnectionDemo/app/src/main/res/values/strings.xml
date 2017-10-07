@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">HttpUrlConnectionDemo</string>
+    <string name="display_json_contents">Display JSON Contents</string>
+</resources>
