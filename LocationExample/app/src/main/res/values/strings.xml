@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">LocationExample</string>
+    <string name="fetch_location">Fetch Location</string>
+</resources>
