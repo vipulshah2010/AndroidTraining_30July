@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">LocationExample</string>
     <string name="fetch_location">Fetch Location</string>
+    <string name="location">Location</string>
+
+    <string name="google_maps_api_key">AIzaSyD0HzIRJZ4Ezfr8Q8xcp6fV3Itxw_xq4cU</string>
 </resources>
