@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "294620910961",
+    "firebase_url": "https://awesomeapp-38fd1.firebaseio.com",
+    "project_id": "awesomeapp-38fd1",
+    "storage_bucket": "awesomeapp-38fd1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:294620910961:android:35fe633f4f2acdec",
+        "android_client_info": {
+          "package_name": "com.example.vipshah.firebasepushnotifications"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "294620910961-rpsb9udi3tljmqpmr2ijdlbha0a3elok.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAG8aBWc-uKkBdZdzTPB8nQ-47YrybMZKw"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
