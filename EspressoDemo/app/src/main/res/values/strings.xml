@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">EspressoDemo</string>
+    <string name="add">Add</string>
+    <string name="subtract">Subtract</string>
+    <string name="multiply">Multiply</string>
+    <string name="divide">Divide</string>
+</resources>
