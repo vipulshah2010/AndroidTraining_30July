@@ -21,11 +21,16 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.answerTextView)
     TextView answerTextView;
 
+    @Inject
+    Car car;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+
+        car.getSpeed();
     }
 
     @OnClick(R.id.addButton)
@@ -75,4 +80,6 @@ public class MainActivity extends AppCompatActivity {
             answerTextView.setText(String.valueOf(answer));
         }
     }
+
+
 }

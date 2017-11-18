@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ラヴィラ</string>
+    <string name="add">追加</string>
+    <string name="subtract">減算</string>
+    <string name="multiply">かける</string>
+    <string name="divide">分割</string>
+</resources>
