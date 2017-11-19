@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="person"
+            type="com.example.vipshah.databindingdemo.Person" />
+
+        <variable
+            name="handler"
+            type="com.example.vipshah.databindingdemo.MainActivity.ClickHandler" />
+
+        <import type="android.view.View" />
+
+        <import type="android.text.TextUtils" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        tools:context="com.example.vipshah.databindingdemo.MainActivity">
+
+        <Button
+            android:id="@+id/nameTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick='@{(view)-> handler.onButtonClicked(view,person.name) }'
+            android:text="@{person.name}"
+            android:textSize="15sp"
+            android:visibility="@{TextUtils.isEmpty(person.name) ? View.GONE:View.VISIBLE}"
+            tools:text="Vipul" />
+
+        <Button
+            android:id="@+id/ageTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick='@{(view)-> handler.onButtonClicked(view,""+person.age) }'
+            android:text='@{""+person.age}'
+            android:textSize="15sp"
+            tools:text="23" />
+
+        <Button
+            android:id="@+id/locationTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick='@{(view)-> handler.onButtonClicked(view,person.location) }'
+            android:text="@{person.location}"
+            android:textSize="15sp"
+            android:visibility="@{TextUtils.isEmpty(person.location) ? View.GONE:View.VISIBLE}"
+            tools:text="Thane" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text='@{person.name+" is Adult!"}'
+            android:textSize="30sp"
+            android:visibility="@{person.age >= 18 ? View.VISIBLE:View.GONE}"
+            tools:text="Vipul is Adult!" />
+    </LinearLayout>
+
+</layout>
